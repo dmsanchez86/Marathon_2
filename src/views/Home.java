@@ -229,6 +229,7 @@ public class Home extends javax.swing.JFrame{
                 
                 if("R".equals(roleUser)){
                     views.Menu_Runner mr = new views.Menu_Runner();
+                    mr.setEmail(email);
                     mr.setVisible(true);
                 }else if("A".equals(roleUser)){
                     views.Menu_Administrator ma = new views.Menu_Administrator();

@@ -12,6 +12,8 @@ import marathon_2.Timer;
  * @author Mauro
  */
 public class Menu_Runner extends javax.swing.JFrame {
+    
+    public String emailUser;
 
     /**
      * Creates new form Menu_Runner
@@ -20,6 +22,10 @@ public class Menu_Runner extends javax.swing.JFrame {
         initComponents();
         
         Timer t = new Timer(lbl_time);
+    }
+    
+    public void setEmail(String email){
+        this.emailUser = email;
     }
 
     /**
@@ -46,6 +52,11 @@ public class Menu_Runner extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Marathon Skills 2016 - Menu Runner");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -111,6 +122,11 @@ public class Menu_Runner extends javax.swing.JFrame {
         btn_register_event.setForeground(new java.awt.Color(153, 153, 153));
         btn_register_event.setText("Register for Event");
         btn_register_event.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        btn_register_event.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_register_eventActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
@@ -189,6 +205,19 @@ public class Menu_Runner extends javax.swing.JFrame {
         Views.Home h = new Views.Home();
         h.setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void btn_register_eventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_eventActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Register_Event re = new Register_Event();
+        re.setEmail(emailUser);
+        re.setVisible(true);
+    }//GEN-LAST:event_btn_register_eventActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        System.out.println(emailUser);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
