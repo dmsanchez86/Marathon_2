@@ -141,6 +141,11 @@ public class Menu_Runner extends javax.swing.JFrame {
         btn_edit_profile.setForeground(new java.awt.Color(153, 153, 153));
         btn_edit_profile.setText("Edit Profile");
         btn_edit_profile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        btn_edit_profile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_edit_profileActionPerformed(evt);
+            }
+        });
 
         btn_sponsorships.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_sponsorships.setForeground(new java.awt.Color(153, 153, 153));
@@ -157,7 +162,7 @@ public class Menu_Runner extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -218,6 +223,14 @@ public class Menu_Runner extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println(emailUser);
     }//GEN-LAST:event_formWindowOpened
+
+    private void btn_edit_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_profileActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Edit_Profile ep = new Edit_Profile();
+        ep.setEmail(emailUser);
+        ep.setVisible(true);
+    }//GEN-LAST:event_btn_edit_profileActionPerformed
 
     /**
      * @param args the command line arguments

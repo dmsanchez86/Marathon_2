@@ -172,4 +172,107 @@ public class Queries extends Conection{
             return false;
         }
     }
+    
+    public int countCountries() {
+        int n = 0;
+        
+        try {
+            conect();
+            
+            query = conection.prepareStatement("SELECT COUNT(*) FROM country");
+            data = query.executeQuery();
+            
+            while(data.next()){
+                n = data.getInt(1);
+            }
+            
+            return n;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
+    public ResultSet getCountries() {
+        try {
+            conect();
+            
+            query = conection.prepareStatement("SELECT * FROM country");
+            data = query.executeQuery();
+            
+            return data;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public String[] dataUser(String emailUser) {
+        String[] dataUser = new String[5];
+        try {
+            conect();
+            
+            query = conection.prepareStatement("SELECT u.FirstName, u.LastName, r.Gender, r.DateOfBirth, c.CountryName "
+                    + "FROM user u "
+                    + "INNER JOIN runner r ON r.Email = u.Email "
+                    + "INNER JOIN country c ON c.CountryCode = r.CountryCode "
+                    + "WHERE u.Email = ?");
+            query.setString(1, emailUser);
+            
+            data = query.executeQuery();
+            
+            while(data.next()){
+                dataUser[0] = data.getString("FirstName");
+                dataUser[1] = data.getString("LastName");
+                dataUser[2] = data.getString("Gender");
+                dataUser[3] = data.getString("DateOfBirth");
+                dataUser[4] = data.getString("CountryName");
+            }
+            
+            return dataUser;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public boolean changePassword(String email, String password) {
+        try {
+            conect();
+            
+            query = conection.prepareStatement("UPDATE user SET Password = ? WHERE Email = ?");
+            query.setString(1, password);
+            query.setString(2, email);
+            query.executeUpdate();
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateProfile(String email, String name, String lastname, String gender, String dateBirth, String codeCountry) {
+        try {
+            conect();
+            
+            query = conection.prepareStatement("UPDATE user u, runner r SET u.FirstName = ?, u.LastName = ?, r.Gender = ?, r.DateOfBirth = ?, r.CountryCode = ? WHERE u.Email = ?");
+            query.setString(1, name);
+            query.setString(2, lastname);
+            query.setString(3, gender);
+            query.setString(4, dateBirth);
+            query.setString(5, codeCountry);
+            query.setString(6, email);
+            int n = query.executeUpdate();
+            
+            if(n > 0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
