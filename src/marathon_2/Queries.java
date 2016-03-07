@@ -275,4 +275,60 @@ public class Queries extends Conection{
             return false;
         }
     }
+
+    public boolean registerUser(String email, String password, String name, String lastname, String gender, String dateBirth, String codeCountry) {
+        try {
+            conect();
+            
+            query = conection.prepareStatement("INSERT INTO user VALUES(?,?,?,?,?)");
+            query.setString(1, email);
+            query.setString(2, password);
+            query.setString(3, name);
+            query.setString(4, lastname);
+            query.setString(5, "R");
+            
+            int r = query.executeUpdate();
+            
+            if(r > 0){
+                query = conection.prepareStatement("INSERT INTO runner VALUES(?,?,?,?,?)");
+                query.setInt(1, 0);
+                query.setString(2, email);
+                query.setString(3, gender);
+                query.setString(4, dateBirth);
+                query.setString(5, codeCountry);
+                
+                int j = query.executeUpdate();
+                
+                if(j > 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean verifyEmail(String email) {
+        try {
+            conect();
+            
+            query = conection.prepareStatement("SELECT COUNT(*) FROM user WHERE Email = ?");
+            query.setString(1, email);
+            
+            ResultSet data = query.executeQuery();
+            
+            while(data.next())
+                return true;
+            
+            return false;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }

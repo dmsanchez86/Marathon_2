@@ -625,6 +625,7 @@ public class Register_Event extends javax.swing.JFrame {
             if(response){
                 this.setVisible(false);
                 Confirmation_Register cr = new Confirmation_Register();
+                cr.setEmail(emailUser);
                 cr.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "Fail register!", "Marathon Skills 2016", JOptionPane.INFORMATION_MESSAGE);

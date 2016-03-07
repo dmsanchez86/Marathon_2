@@ -12,7 +12,8 @@ import marathon_2.Timer;
  * @author Mauro
  */
 public class Confirmation_Register extends javax.swing.JFrame {
-
+    public String emailUser;
+    
     /**
      * Creates new form Confirmation_Register
      */
@@ -20,6 +21,10 @@ public class Confirmation_Register extends javax.swing.JFrame {
         initComponents();
         
         Timer t = new Timer(lbl_time);
+    }
+    
+    void setEmail(String emailUser) {
+        this.emailUser = emailUser;
     }
 
     /**
@@ -93,8 +98,8 @@ public class Confirmation_Register extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_time, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(lbl_time, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,6 +164,7 @@ public class Confirmation_Register extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         Menu_Runner mr = new Menu_Runner();
+        mr.setEmail(emailUser);
         mr.setVisible(true);
     }//GEN-LAST:event_btn_backActionPerformed
 
@@ -166,6 +172,7 @@ public class Confirmation_Register extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         Menu_Runner mr = new Menu_Runner();
+        mr.setEmail(emailUser);
         mr.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
