@@ -10,8 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import marathon_2.Queries;
-import marathon_2.Timer;
+import models.Queries;
+import models.Timer;
 
 /**
  *

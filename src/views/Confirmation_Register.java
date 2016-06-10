@@ -5,7 +5,7 @@
  */
 package views;
 
-import marathon_2.Timer;
+import models.Timer;
 
 /**
  *

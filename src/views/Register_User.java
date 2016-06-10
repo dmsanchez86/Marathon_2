@@ -8,8 +8,8 @@ package views;
 import java.sql.ResultSet;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import marathon_2.Queries;
-import marathon_2.Timer;
+import models.Queries;
+import models.Timer;
 
 /**
  *
@@ -318,20 +318,17 @@ public class Register_User extends javax.swing.JFrame {
 
         // validate email
         for (int i = 0; i < email.length(); i++) {
-            if(
-                    email.charAt(i) == '@' 
-            ){
+            if(email.charAt(i) == '@'){
                 step1++;
             }
             
-            if(
-                    email.charAt(i) == '.'
-            ){
+            if(email.charAt(i) == '.'){
                 step2++;
             }
             
-            if(step1 > 0 && step2 > 0)
+            if(step1 > 0 && step2 > 0){
                 validEmail = true;
+            }
         }
         
         // validate password
@@ -345,12 +342,12 @@ public class Register_User extends javax.swing.JFrame {
             }
 
             if(
-                    password.charAt(i) == '!' || 
-                    password.charAt(i) == '@' || 
-                    password.charAt(i) == '#' || 
-                    password.charAt(i) == '$' || 
-                    password.charAt(i) == '%' || 
-                    password.charAt(i) == '^'
+                password.charAt(i) == '!' || 
+                password.charAt(i) == '@' || 
+                password.charAt(i) == '#' || 
+                password.charAt(i) == '$' || 
+                password.charAt(i) == '%' || 
+                password.charAt(i) == '^'
             ){
                 numberCharacters++;
             }

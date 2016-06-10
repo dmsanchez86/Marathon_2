@@ -1,4 +1,4 @@
-package marathon_2;
+package models;
 
 import Views.Home;
 import java.awt.Color;
@@ -24,7 +24,7 @@ public class Timer implements Runnable{
     @Override
     public void run() {
         Calendar future_time = Calendar.getInstance();
-        future_time.set(2016, Calendar.JUNE, 13, 6, 0, 0);
+        future_time.set(2016, Calendar.JUNE, 15, 6, 0, 0);
         long future_time_in_miliseconds = future_time.getTimeInMillis();
         
         String txt_time = lbl_time.getText();

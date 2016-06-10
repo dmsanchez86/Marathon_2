@@ -1,9 +1,9 @@
 package Views;
 
 import javax.swing.JOptionPane;
-import marathon_2.Conection;
-import marathon_2.Queries;
-import marathon_2.Timer;
+import models.Conection;
+import models.Queries;
+import models.Timer;
 
 /**
  * @author Mao

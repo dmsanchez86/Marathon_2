@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package marathon_2;
+package models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -299,11 +299,7 @@ public class Queries extends Conection{
                 
                 int j = query.executeUpdate();
                 
-                if(j > 0){
-                    return true;
-                }else{
-                    return false;
-                }
+                return j > 0;
             }else{
                 return false;
             }
@@ -320,10 +316,11 @@ public class Queries extends Conection{
             query = conection.prepareStatement("SELECT COUNT(*) FROM user WHERE Email = ?");
             query.setString(1, email);
             
-            ResultSet data = query.executeQuery();
+            data = query.executeQuery();
             
-            while(data.next())
+            while(data.next()){
                 return true;
+            }
             
             return false;
         } catch (Exception e) {
